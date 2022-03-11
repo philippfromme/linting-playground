@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+}
+
+#container {
+  flex-grow: 1;
+}
+
+#properties-panel-container {
+  background: #f8f8f8;
+  border-left: solid 1px #ccc;
+  width: 300px;
+}
+
+#controls {
+  position: absolute;
+  top: 20px;
+  right: 320px;
+  display: flex;
+  flex-direction: column;
+  /* background: hsl(225, 10%, 97%); */
+  background: white;
+  border: solid 1px hsl(225, 10%, 75%);
+  border-radius: 2px;
+  padding: 6px 0;
+}
+
+#controls .controls-entry {
+  margin: 2px 12px 6px 12px;
+}
+
+#controls .controls-entry label {
+  display: block;
+  font-size: 13px !important;
+  margin: 2px 0 1px;
+  color: hsl(225, 10%, 15%);
+  font-size: var(--text-size-base);
+  line-height: 21px;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+#controls input,
+#controls select {
+  line-height: 21px;
+  padding: 3px 6px 2px;
+  border: 1px solid hsl(225, 10%, 75%);
+  border-radius: 2px;
+  background-color: hsl(225, 10%, 97%);
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+}
+
+#controls input:focus,
+#controls select:focus {
+  outline: none;
+  background-color: hsl(205, 100%, 95%);
+  border: 1px solid hsl(205, 100%, 50%);
+}
+
+#controls select {
+  padding: 4px 6px;
+}
+
+#controls button {
+  line-height: 21px;
+  padding: 3px 6px 2px;
+  border: 1px solid hsl(205, 100%, 50%);
+  border-radius: 2px;
+  background-color: hsl(205, 100%, 45%);
+  font-size: 14px;
+  font-family: inherit;
+  width: 200px;
+  cursor: pointer;
+  color: white;
+  width: 100%;
+}
