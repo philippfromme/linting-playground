@@ -1,3 +1,41 @@
+:root {
+  --color-grey-225-10-15: hsl(225, 10%, 15%); /* text */
+  --color-grey-225-10-35: hsl(225, 10%, 35%); /* icons */
+  --color-grey-225-10-55: hsl(225, 10%, 55%);
+  --color-grey-225-10-75: hsl(225, 10%, 75%); /* lines */
+  --color-grey-225-10-80: hsl(225, 10%, 80%); /* hover on grey bg */
+  --color-grey-225-10-85: hsl(225, 10%, 85%); /* app window */
+  --color-grey-225-10-90: hsl(225, 10%, 90%); /* button hover */
+  --color-grey-225-10-95: hsl(225, 10%, 95%); /* backgrounds, hover */
+  --color-grey-225-10-97: hsl(225, 10%, 97%); /* form element backgrounds */
+
+  --color-blue-205-100-45: hsl(205, 100%, 45%); /* primary hover */
+  --color-blue-205-100-50: hsl(205, 100%, 50%); /* primary */
+  --color-blue-205-100-95: hsl(205, 100%, 95%);
+
+  --color-green-150-86-44: hsl(150, 86%, 44%); /* success */
+
+  --color-red-360-100-40: hsl(360, 100%, 40%); /* warning hover */
+  --color-red-360-100-45: hsl(360, 100%, 45%); /* warning */
+  --color-red-360-100-92: hsl(360, 100%, 92%); /* hover */
+  --color-red-360-100-97: hsl(360, 100%, 97%); /* backgrounds */
+
+  --color-orange-20-98-52: hsl(20, 98%, 52%); /* new badges */
+
+  --color-white: hsl(0, 0%, 100%);
+  --color-white-opacity-80: hsla(0, 0%, 100%, 80%);
+  --color-black: hsl(0, 0%, 0%); 
+  --color-black-opacity-10: hsla(0, 0%, 0%, 10%); 
+  --color-black-opacity-30: hsla(0, 0%, 0%, 30%);
+}
+
+:root {
+  --font-family: 'IBM Plex Sans', system-ui, Arial, sans-serif;
+  --font-family-monospace: 'IBM Plex Mono', monospace;
+  --font-size-default: 14px;
+}
+
+
 * {
   box-sizing: border-box;
 }
@@ -5,7 +43,7 @@
 html,
 body,
 #root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 12px;
   height: 100%;
   margin: 0;
@@ -15,6 +53,13 @@ body,
 
 #root {
   display: flex;
+  flex-direction: column;
+}
+
+#modeler {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
 }
 
 #container {
@@ -27,67 +72,97 @@ body,
   width: 300px;
 }
 
-#controls {
-  position: absolute;
-  top: 20px;
-  right: 320px;
+.panel {
   display: flex;
   flex-direction: column;
-  /* background: hsl(225, 10%, 97%); */
-  background: white;
-  border: solid 1px hsl(225, 10%, 75%);
-  border-radius: 2px;
-  padding: 6px 0;
 }
 
-#controls .controls-entry {
-  margin: 2px 12px 6px 12px;
+.panel.open {
+  height: 200px;
 }
 
-#controls .controls-entry label {
-  display: block;
-  font-size: 13px !important;
-  margin: 2px 0 1px;
-  color: hsl(225, 10%, 15%);
-  font-size: var(--text-size-base);
-  line-height: 21px;
-  font-weight: 400;
-  box-sizing: border-box;
+.panel__links {
+  background-color: var(--color-grey-225-10-95);
+  border-bottom: solid 1px var(--color-grey-225-10-75);
+  border-top: solid 1px var(--color-grey-225-10-75);
+  display: flex;
+  flex-direction: row;
 }
 
-#controls input,
-#controls select {
-  line-height: 21px;
-  padding: 3px 6px 2px;
-  border: 1px solid hsl(225, 10%, 75%);
-  border-radius: 2px;
-  background-color: hsl(225, 10%, 97%);
-  font-size: 14px;
-  font-family: inherit;
-  width: 100%;
-}
-
-#controls input:focus,
-#controls select:focus {
+.panel__link {
+  background: none;
+  border: none;
+  border-bottom: solid 2px transparent;
   outline: none;
-  background-color: hsl(205, 100%, 95%);
-  border: 1px solid hsl(205, 100%, 50%);
+  padding: 4px 8px;
 }
 
-#controls select {
-  padding: 4px 6px;
+.panel__link--active {
+  border-bottom: solid 2px var(--color-grey-225-10-15);
 }
 
-#controls button {
-  line-height: 21px;
-  padding: 3px 6px 2px;
-  border: 1px solid hsl(205, 100%, 50%);
-  border-radius: 2px;
-  background-color: hsl(205, 100%, 45%);
-  font-size: 14px;
-  font-family: inherit;
-  width: 200px;
-  cursor: pointer;
-  color: white;
-  width: 100%;
+.panel__link-number {
+  background-color: var(--color-grey-225-10-15);
+  border-radius: 9px;
+  color: var(--color-white);
+  display: inline-block;
+  margin-left: 4px;
+  padding: 2px 6px;
+}
+
+.panel__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+}
+
+.panel__inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.linting-report {
+  align-items: center;
+  border-bottom: solid 1px var(--color-grey-225-10-75);
+  display: flex;
+  padding: 6px 8px 4px 8px;
+}
+
+.linting-report:last-child {
+  border-bottom: none;
+}
+
+.linting-report svg {
+  fill: var(--color-red-360-100-45);
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+}
+
+.linting-report__text {
+  line-height: 16px;
+  user-select: text;
+}
+
+.linting-report * {
+  user-select: text;
+}
+
+.linting-report__link {
+  background-color: var(--color-blue-205-100-95);
+  border-radius: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 2px 4px;
+  cursor: default;
+}
+
+.linting-report__link:hover {
+  background-color: var(--color-blue-205-100-50);
+  color: var(--color-white);
 }
