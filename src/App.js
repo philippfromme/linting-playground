@@ -773,6 +773,10 @@ const diagramSimple = `<?xml version="1.0" encoding="UTF-8"?>
 </bpmn:definitions>
 `;
 
+const linter = new Linter({
+  modeler: 'web'
+});
+
 export default function App() {
   const ref = useRef();
 
@@ -826,7 +830,7 @@ export default function App() {
       const lint = async () => {
 
         // (1) get reports
-        const reports = await Linter.lint(modeler.getDefinitions());
+        const reports = await linter.lint(modeler.getDefinitions());
 
         console.log('reports', reports);
 
