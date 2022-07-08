@@ -90,6 +90,8 @@ body,
 }
 
 .panel__link {
+  font-size: 14px;
+  color: var(--color-grey-225-10-35);
   background: none;
   border: none;
   border-bottom: solid 2px transparent;
@@ -98,16 +100,16 @@ body,
 }
 
 .panel__link--active {
-  border-bottom: solid 2px var(--color-grey-225-10-15);
+  border-bottom: solid 2px var(--color-grey-225-10-35);
 }
 
 .panel__link-number {
-  background-color: var(--color-grey-225-10-15);
-  border-radius: 9px;
+  background-color: var(--color-grey-225-10-35);
+  border-radius: 11px;
   color: var(--color-white);
   display: inline-block;
-  margin-left: 4px;
-  padding: 2px 6px;
+  margin-left: 6px;
+  padding: 1px 7px;
 }
 
 .panel__body {
@@ -126,43 +128,50 @@ body,
   overflow-y: auto;
 }
 
-.linting-report {
-  align-items: center;
-  border-bottom: solid 1px var(--color-grey-225-10-75);
+.linting-issue {
   display: flex;
-  padding: 6px 8px 4px 8px;
+  align-items: flex-start;
+  padding: 4px 8px 2px 8px;
+  border-bottom: solid 1px var(--color-grey-225-10-95);
 }
 
-.linting-report:last-child {
+.linting-issue:last-child {
   border-bottom: none;
 }
 
-.linting-report svg {
+.linting-issue svg {
   fill: var(--color-red-360-100-45);
   margin-right: 8px;
   width: 20px;
   height: 20px;
 }
 
-.linting-report__text {
-  line-height: 16px;
+.linting-issue__text {
+  font-size: 14px;
+  line-height: 20px;
   user-select: text;
 }
 
-.linting-report * {
+.linting-issue * {
   user-select: text;
 }
 
-.linting-report__link {
+.linting-issue__link {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background-color: var(--color-blue-205-100-95);
   border-radius: 4px;
   margin-left: 4px;
   margin-right: 4px;
-  padding: 2px 4px;
+  padding: 1px 4px;
   cursor: default;
 }
 
-.linting-report__link:hover {
+.linting-issue__link:hover {
   background-color: var(--color-blue-205-100-50);
   color: var(--color-white);
 }
