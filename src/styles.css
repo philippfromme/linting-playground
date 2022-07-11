@@ -175,3 +175,37 @@ body,
   background-color: var(--color-blue-205-100-50);
   color: var(--color-white);
 }
+
+.linting-annotation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 100px;
+  color: var(--color-grey-225-10-35);
+  /* background-color: var(--color-grey-225-10-95); */
+  background-color: var(--color-red-360-100-45);
+  cursor: default;
+  z-index: 100000;
+  opacity: 0.5;
+}
+
+.linting-annotation:hover {
+  /* background-color: var(--color-grey-225-10-90); */
+  opacity: 1;
+}
+
+.linting-annotation svg {
+  /* fill: var(--color-red-360-100-45); */
+  fill: var(--color-white);
+  width: 20px;
+  height: 20px;
+  margin-left: -4px;
+}
+
+.linting-annotation span {
+  line-height: 20px;
+  color: var(--color-white);
+}

@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import Modeler from 'bpmn-js/lib/Modeler';
 
 import { Linter } from '@camunda/linting';
-import { getErrors } from '@camunda/linting/lib/utils/properties-panel';
 
 import zeebeModdlePackage from 'zeebe-bpmn-moddle/resources/zeebe';
 import zeebeModdleExtension from 'zeebe-bpmn-moddle/lib';
@@ -16,15 +15,18 @@ import {
   ZeebePropertiesProviderModule as zeebePropertiesProviderModule
 } from 'bpmn-js-properties-panel';
 
+import lintingModule from './features/linting';
+
 import 'bpmn-js-properties-panel/dist/assets/properties-panel.css';
 import 'bpmn-js/dist/assets/diagram-js.css';
+import 'bpmn-js/dist/assets/bpmn-js.css';
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css';
 
 import './styles.css';
 
 const diagram = `
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_10h1baj" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="1.0.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_10h1baj" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
   <bpmn:message id="Message_10da3fn" name="Message_1">
     <bpmn:extensionElements>
       <zeebe:subscription correlationKey="foo" />
@@ -793,9 +795,9 @@ export default function App() {
   const toggleLinting = () => {
     if (modeler) {
       if (lintingActive) {
-        modeler._emit('propertiesPanel.setErrors', { errors: {} });
+        modeler.get('linting').deactivate();
       } else {
-        modeler._emit('propertiesPanel.setErrors', { errors: getErrors(reports, modeler.get('selection').get()[ 0 ]) });
+        modeler.get('linting').activate();
       }
     }
 
@@ -810,7 +812,8 @@ export default function App() {
           bpmnPropertiesProviderModule,
           propertiesPanelModule,
           zeebeModdleExtension,
-          zeebePropertiesProviderModule
+          zeebePropertiesProviderModule,
+          lintingModule
         ],
         propertiesPanel: {
           parent: propertiesPanelRef.current
@@ -828,8 +831,6 @@ export default function App() {
       setModeler(modeler);
 
       const lint = async () => {
-
-        // (1) get reports
         const reports = await linter.lint(modeler.getDefinitions());
 
         console.log('reports', reports);
@@ -837,16 +838,7 @@ export default function App() {
         setReports(reports);
         reportsRef.current = reports;
 
-        // (2) get properties panel errors
-        const element = modeler.get('selection').get()[ 0 ];
-
-        const errors = getErrors(reports, element);
-
-        console.log('errors', errors);
-
-        modeler._emit('propertiesPanel.setErrors', {
-          errors
-        });
+        modeler.get('linting').setErrors(reports);
       };
 
       lint();
@@ -855,48 +847,12 @@ export default function App() {
         lint();
       });
 
-      modeler.on('selection.changed', ({ newSelection = [] }) => {
-        const element = newSelection[ 0 ];
-
-        const errors = getErrors(reportsRef.current, element);
-
-        modeler._emit('propertiesPanel.setErrors', {
-          errors
-        });
-      });
-
       window.modeler = modeler;
     })();
   }, []);
 
   const onClick = (report) => () => {
-    const canvas = modeler.get('canvas'),
-          elementRegistry = modeler.get('elementRegistry'),
-          eventBus = modeler.get('eventBus'),
-          selection = modeler.get('selection');
-
-    const {
-      id,
-      propertiesPanel = {}
-    } = report;
-
-    const element = elementRegistry.get(id);
-
-    if (!element) {
-      throw new Error('element not found');
-    }
-
-    if (element !== canvas.getRootElement()) {
-      canvas.scrollToElement(element);
-    }
-
-    selection.select(element);
-
-    const { entryId } = propertiesPanel;
-
-    eventBus.fire('propertiesPanel.showEntry', {
-      id: entryId
-    });
+    modeler.get('linting').showError(report);
   };
 
   return (
