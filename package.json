@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
+  "homepage": "https://philippfrom.me/linting-playground",
   "dependencies": {
     "@bpmn-io/moddle-utils": "^0.1.0",
     "@bpmn-io/properties-panel": "^0.14.0",
@@ -29,7 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",

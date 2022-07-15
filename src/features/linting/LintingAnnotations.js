@@ -64,10 +64,19 @@ export default class LintingAnnotations {
   }
 
   _getOverlayPosition(element) {
-    return {
-      bottom: 10,
-      left: -10
-    };
+
+    switch (parseInt(window.variant)) {
+    case 1:
+      return {
+        bottom: 10,
+        left: -10
+      };
+    default:
+      return {
+        top: 0,
+        left: 0
+      };
+    }
   }
 }
 

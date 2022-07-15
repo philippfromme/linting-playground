@@ -775,6 +775,18 @@ const diagram = `
 // </bpmn:definitions>
 // `;
 
+const queryString = window.location.search;
+
+const urlParams = new URLSearchParams(queryString);
+
+const variant = urlParams.get('variant');
+
+if (variant) {
+  document.body.classList.add(`variant-${ variant }`);
+
+  window.variant = variant;
+}
+
 const linter = new Linter({
   modeler: 'web'
 });

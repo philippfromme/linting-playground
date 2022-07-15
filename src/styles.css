@@ -176,7 +176,8 @@ body,
   color: var(--color-white);
 }
 
-.linting-annotation {
+/* Variant 1 - Operate */
+body.variant-1 .linting-annotation {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -192,12 +193,12 @@ body,
   opacity: 0.5;
 }
 
-.linting-annotation:hover {
+body.variant-1 .linting-annotation:hover {
   /* background-color: var(--color-grey-225-10-90); */
   opacity: 1;
 }
 
-.linting-annotation svg {
+body.variant-1 .linting-annotation svg {
   /* fill: var(--color-red-360-100-45); */
   fill: var(--color-white);
   width: 20px;
@@ -205,7 +206,7 @@ body,
   margin-left: -4px;
 }
 
-.linting-annotation span {
+body.variant-1 .linting-annotation span {
   line-height: 20px;
   color: var(--color-white);
 }
