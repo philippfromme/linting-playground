@@ -26,7 +26,7 @@ export default class Linting {
 
     const element = this._elementRegistry.get(id);
 
-    if (element !== this._canvas.getRootElement()) {
+    if (element !== this._canvas.getRootElement() && needsScrollToElement(this._canvas, element)) {
       this._canvas.scrollToElement(element);
     }
 
@@ -99,4 +99,13 @@ Linting.$inject = [
 
 function isLabel(element) {
   return !!element.labelTarget;
+}
+
+function needsScrollToElement(canvas, element) {
+  const viewbox = canvas.viewbox();
+
+  return viewbox.x > element.x
+    || viewbox.y > element.y
+    || viewbox.x + viewbox.width < element.x + element.width
+    || viewbox.y + viewbox.height < element.y + element.height;
 }
