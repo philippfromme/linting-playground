@@ -46,11 +46,12 @@ export default class LintingAnnotations {
         </div>
       `);
 
-      if (!isElementTypeNotAllowed) {
-        overlay.addEventListener('click', () => {
-          this._eventBus.fire('refactorMe', { report: reports[ 0 ] });
-        });
-      }
+      // if (!isElementTypeNotAllowed) {
+      overlay.addEventListener('click', () => {
+        this._eventBus.fire('refactorMe', { report: reports[ 0 ] });
+      });
+
+      // }
 
       const overlayId = this._overlays.add(element, 'linting', {
         position: this._getOverlayPosition(element),
