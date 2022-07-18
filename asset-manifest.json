@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/linting-playground/static/css/main.dbad36ad.chunk.css",
-    "main.js": "/linting-playground/static/js/main.5b3cec5c.chunk.js",
-    "main.js.map": "/linting-playground/static/js/main.5b3cec5c.chunk.js.map",
+    "main.js": "/linting-playground/static/js/main.b79b6549.chunk.js",
+    "main.js.map": "/linting-playground/static/js/main.b79b6549.chunk.js.map",
     "runtime-main.js": "/linting-playground/static/js/runtime-main.8ef1cca4.js",
     "runtime-main.js.map": "/linting-playground/static/js/runtime-main.8ef1cca4.js.map",
     "static/css/2.7b0246b7.chunk.css": "/linting-playground/static/css/2.7b0246b7.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.7b0246b7.chunk.css",
     "static/js/2.3f2a712d.chunk.js",
     "static/css/main.dbad36ad.chunk.css",
-    "static/js/main.5b3cec5c.chunk.js"
+    "static/js/main.b79b6549.chunk.js"
   ]
 }
