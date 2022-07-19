@@ -43,6 +43,10 @@ document.body.classList.add(`variant-${ variant }`);
 
 window.variant = variant;
 
+const position = urlParams.get('position') || 'bottom';
+
+window.position = position;
+
 const opacity = urlParams.get('opacity') || '0';
 
 document.body.classList.add(`opacity-${ opacity }`);

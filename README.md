@@ -2,11 +2,17 @@
 
 ## Prototypes
 
-1. [Web Modeler style](https://philippfrom.me/linting-playground/?variant=2)
-2. [Web Modeler style with opacity](https://philippfrom.me/linting-playground/?variant=2&opacity=1)
-3. [Web Modeler style with number](https://philippfrom.me/linting-playground/?variant=2&number=1)
-4. [Operate style](https://philippfrom.me/linting-playground/?variant=1)
-5. [Operate style with opacity](https://philippfrom.me/linting-playground/?variant=1&opacity=1)
-6. [Operate style with number](https://philippfrom.me/linting-playground/?variant=1&number=0)
+1. [Operate style](https://philippfrom.me/linting-playground/?variant=1)
+1. [Web Modeler style A](https://philippfrom.me/linting-playground/?variant=2)
+1. [Web Modeler style B](https://philippfrom.me/linting-playground/?variant=3)
+
+### Query Parameters
+
+| Parameter | Values |
+|---|---|
+| `number` | `0` or `1` |
+| `opacity` | `0` or `1` |
+| `position` | `top` or `bottom` |
+| `variant` | `1`, `2`, `3` |
 
 ![](docs/screenshot.png)

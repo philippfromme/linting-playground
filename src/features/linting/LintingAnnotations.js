@@ -67,13 +67,13 @@ export default class LintingAnnotations {
 
   _getOverlayPosition(element) {
 
-    switch (parseInt(window.variant)) {
-    case 1:
+    switch (window.position) {
+    case 'overlap':
       return {
         bottom: 10,
         left: -10
       };
-    case 2:
+    case 'bottom':
       return {
         bottom: -5,
         left: 0
