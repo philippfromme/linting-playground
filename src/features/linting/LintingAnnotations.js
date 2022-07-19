@@ -56,8 +56,8 @@ export default class LintingAnnotations {
       const overlayId = this._overlays.add(element, 'linting', {
         position: this._getOverlayPosition(element),
         html: overlay,
-        scale: {
-          min: .9
+        show: {
+          minZoom: 0.5
         }
       });
 
