@@ -15,4 +15,6 @@
 | `position` | `top` or `bottom` |
 | `variant` | `1`, `2`, `3` |
 
+Example: http://philippfrom.me/linting-playground?number=0&opacity=1&position=bottom&variant=1
+
 ![](docs/screenshot.png)
