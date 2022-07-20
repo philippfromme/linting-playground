@@ -15,7 +15,7 @@ export default class Linting {
 
     eventBus.on('selection.changed', () => this.update());
 
-    eventBus.on('refactorMe', ({ report }) => this.showError(report));
+    eventBus.on('lintingAnnotations.click', ({ report }) => this.showError(report));
   }
 
   showError(report) {

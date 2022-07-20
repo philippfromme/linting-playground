@@ -48,7 +48,7 @@ export default class LintingAnnotations {
 
       // if (!isElementTypeNotAllowed) {
       overlay.addEventListener('click', () => {
-        this._eventBus.fire('refactorMe', { report: reports[ 0 ] });
+        this._eventBus.fire('lintingAnnotations.click', { report: reports[ 0 ] });
       });
 
       // }

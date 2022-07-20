@@ -136,6 +136,10 @@ body,
   border-bottom: solid 1px var(--color-grey-225-10-95);
 }
 
+.linting-issue--selected {
+  background-color: var(--color-grey-225-10-95);
+}
+
 .linting-issue:last-child {
   border-bottom: none;
 }

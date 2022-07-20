@@ -69,6 +69,8 @@ export default function App() {
 
   const [ reports, setReports ] = useState([]);
 
+  const [ selectedReport, setSelectedReport ] = useState();
+
   const reportsRef = useRef([]);
 
   const [ lintingActive, setLintingActive ] = useState(true);
@@ -132,12 +134,27 @@ export default function App() {
         lint();
       });
 
+      modeler.on('lintingAnnotations.click', ({ report }) => {
+        setSelectedReport(report);
+      });
+
+      modeler.on('selection.changed', ({ newSelection }) => {
+        setSelectedReport(null);
+      });
+
       window.modeler = modeler;
     })();
   }, []);
 
+
+  useEffect(() => {
+    setSelectedReport(null);
+  }, [ reports ]);
+
   const onClick = (report) => () => {
     modeler.get('linting').showError(report);
+
+    setSelectedReport(report);
   };
 
   return (
@@ -171,6 +188,7 @@ export default function App() {
                     <LintingReport
                       key={ `${ id }-${ message }` }
                       report={ report }
+                      selected={ selectedReport && selectedReport.id === report.id }
                       onClick={ onClick(report) } />
                   );
                 }))
@@ -198,7 +216,8 @@ export default function App() {
 function LintingReport(props) {
   const {
     onClick,
-    report
+    report,
+    selected
   } = props;
 
   const {
@@ -207,7 +226,22 @@ function LintingReport(props) {
     message
   } = report;
 
-  return <div className="linting-issue">
+  const ref = useRef();
+
+  useEffect(() => {
+    if (selected) {
+      ref.current && ref.current.scrollIntoView({
+        behavior: 'auto',
+        block: 'nearest',
+
+        // inline: 'start'
+      });
+    }
+  }, [ selected ]);
+
+  return <div ref={ ref } className={ classNames('linting-issue', {
+    'linting-issue--selected': selected
+  }) }>
     <div className="linting-issue__icon">
       <svg viewBox="0 0 24 24">
         <path d="M12,5 C15.8659932,5 19,8.13400675 19,12 C19,15.8659932 15.8659932,19 12,19 C8.13400675,19 5,15.8659932 5,12 C5,8.13400675 8.13400675,5 12,5 Z M9.33333333,8 L8,9.33333333 L10.667,12 L8,14.6666667 L9.33333333,16 L12,13.333 L14.6666667,16 L16,14.6666667 L13.333,12 L16,9.33333333 L14.6666667,8 L12,10.666 L9.33333333,8 Z"></path>
