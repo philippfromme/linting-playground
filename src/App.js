@@ -162,7 +162,7 @@ export default function App() {
       <div id="modeler">
         <div id="container" ref={ ref }></div>
         <div id="properties-panel-container">
-          <div class="properties-panel-container__inner" ref={ propertiesPanelRef }></div>
+          <div className="properties-panel-container__inner" ref={ propertiesPanelRef }></div>
         </div>
       </div>
       <div id="linting" className={ classNames('panel', { open: lintingActive }) }>
@@ -190,7 +190,7 @@ export default function App() {
                     <LintingReport
                       key={ `${ id }-${ message }` }
                       report={ report }
-                      selected={ selectedReport && selectedReport.id === report.id }
+                      selected={ selectedReport && selectedReport === report }
                       onClick={ onClick(report) } />
                   );
                 }))
@@ -254,7 +254,12 @@ function LintingReport(props) {
 
 function sortReports(issues) {
   return issues.sort((a, b) => {
-    if ((a.label || a.id).toLowerCase() <= (b.label || b.id).toLowerCase()) {
+    const labelA = (a.name || a.id).toLowerCase(),
+          labelB = (b.name || b.id).toLowerCase();
+
+    if (labelA === labelB) {
+      return 0;
+    } else if (labelA < labelB) {
       return -1;
     } else {
       return 1;
