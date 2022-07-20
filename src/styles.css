@@ -67,9 +67,19 @@ body,
 }
 
 #properties-panel-container {
+  position: relative;
+  width: 300px;
   background: #f8f8f8;
   border-left: solid 1px #ccc;
-  width: 300px;
+}
+
+.properties-panel-container__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
 }
 
 .panel {

@@ -161,7 +161,9 @@ export default function App() {
     <>
       <div id="modeler">
         <div id="container" ref={ ref }></div>
-        <div id="properties-panel-container" ref={ propertiesPanelRef }></div>
+        <div id="properties-panel-container">
+          <div class="properties-panel-container__inner" ref={ propertiesPanelRef }></div>
+        </div>
       </div>
       <div id="linting" className={ classNames('panel', { open: lintingActive }) }>
         <div className="panel__links">
@@ -231,10 +233,7 @@ function LintingReport(props) {
   useEffect(() => {
     if (selected) {
       ref.current && ref.current.scrollIntoView({
-        behavior: 'auto',
         block: 'nearest',
-
-        // inline: 'start'
       });
     }
   }, [ selected ]);
