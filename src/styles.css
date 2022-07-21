@@ -284,12 +284,12 @@ body.variant-1 .linting-annotation {
   z-index: 100000;
 }
 
-body.number-0 .linting-annotation span {
+.linting-annotation span {
   /* background-color: var(--color-grey-225-10-90); */
   display: none;
 }
 
-body.number-0 .linting-annotation:hover span {
+.linting-annotation:hover span {
   /* background-color: var(--color-grey-225-10-90); */
   display: initial;
 }

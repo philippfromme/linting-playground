@@ -55,6 +55,8 @@ const number = urlParams.get('number') || '0';
 
 document.body.classList.add(`number-${ number }`);
 
+window.number = number;
+
 // linter
 const linter = new Linter({
   modeler: 'web'
