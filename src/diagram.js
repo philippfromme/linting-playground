@@ -1,6 +1,6 @@
 export default `
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_01p3jf9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.1.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0" camunda:diagramRelationId="a0d0615c-3547-410d-a6d0-e0f5f7c190e8">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_01p3jf9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.1.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="1.3.0" camunda:diagramRelationId="a0d0615c-3547-410d-a6d0-e0f5f7c190e8">
   <bpmn:process id="template-error-handling" name="Error Handling Example" isExecutable="true">
     <bpmn:extensionElements>
       <zeebe:userTaskForm id="userTaskForm_1q238ds"></zeebe:userTaskForm>
@@ -13,7 +13,7 @@ export default `
       <bpmn:outgoing>Flow_1may791</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_0srs30c" errorRef="Error_0gyjhl0" />
     </bpmn:boundaryEvent>
-    <bpmn:serviceTask id="Activity_1kpg3ok" name="Verify Data is Correct">
+    <bpmn:serviceTask id="Activity_1kpg3ok" name="Verify Data is Correct" zeebe:modelerTemplate="foobar">
       <bpmn:extensionElements>
         <zeebe:taskDefinition />
       </bpmn:extensionElements>
