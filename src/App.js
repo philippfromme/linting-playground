@@ -57,6 +57,10 @@ document.body.classList.add(`number-${ number }`);
 
 window.number = number;
 
+const toggle = urlParams.get('toggle') || '0';
+
+window.toggle = toggle;
+
 // linter
 const linter = new Linter({
   modeler: 'web'

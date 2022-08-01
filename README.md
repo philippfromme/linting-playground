@@ -1,20 +1,17 @@
 # Linting Playground
 
-## Prototypes
+## How to use the prototype
 
-1. [Operate style](https://philippfrom.me/linting-playground/?variant=1)
-1. [Web Modeler style A](https://philippfrom.me/linting-playground/?variant=2)
-1. [Web Modeler style B](https://philippfrom.me/linting-playground/?variant=3)
+#### Query Parameters
 
-### Query Parameters
+| Parameter | Values | Description |
+|---|---|---|
+| `number` | `0` or `1` | Whether to show the number |
+| `opacity` | `0` or `1` | Whether to give annotations less than full opacity unless they're hovered |
+| `position` | `top` or `bottom` | Where to position the annotations |
+| `toggle` | `0` or `1` | Whether to toggle errors in the properties panel when toggling the error panel |
+| `variant` | `1`, `2`, `3` | What styling to use |
 
-| Parameter | Values |
-|---|---|
-| `number` | `0` or `1` |
-| `opacity` | `0` or `1` |
-| `position` | `top` or `bottom` |
-| `variant` | `1`, `2`, `3` |
-
-Example: http://philippfrom.me/linting-playground?number=0&opacity=1&position=bottom&variant=1
+Example: http://philippfrom.me/linting-playground?number=0&opacity=1&position=bottom&toggle=0&variant=1
 
 ![](docs/screenshot.png)

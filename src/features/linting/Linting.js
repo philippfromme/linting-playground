@@ -64,7 +64,14 @@ export default class Linting {
     // set properties panel errors
     const selectedElement = this._getSelectedElement();
 
-    const elementErrors = getErrors(this._reports, selectedElement);
+    // TODO: decide on behavior
+    let elementErrors;
+
+    if (parseInt(window.toggle)) {
+      elementErrors = getErrors(reports, selectedElement);
+    } else {
+      elementErrors = getErrors(this._reports, selectedElement);
+    }
 
     this._eventBus.fire('propertiesPanel.setErrors', {
       errors: elementErrors
