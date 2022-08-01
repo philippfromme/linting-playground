@@ -38,7 +38,7 @@ export default class LintingAnnotations {
         && reports[ 0 ].error.type === 'elementTypeNotAllowed';
 
       const overlay = domify(`
-        <div class="linting-annotation" title="${ isElementTypeNotAllowed ? 'Not supported' : 'Show Problem' }">
+        <div class="linting-annotation" title="${ isElementTypeNotAllowed ? 'Click to show' : 'Click to show' }">
           <svg viewBox="2 2 20 20">
             <path d="M12,5 C15.8659932,5 19,8.13400675 19,12 C19,15.8659932 15.8659932,19 12,19 C8.13400675,19 5,15.8659932 5,12 C5,8.13400675 8.13400675,5 12,5 Z M9.33333333,8 L8,9.33333333 L10.667,12 L8,14.6666667 L9.33333333,16 L12,13.333 L14.6666667,16 L16,14.6666667 L13.333,12 L16,9.33333333 L14.6666667,8 L12,10.666 L9.33333333,8 Z"></path>
           </svg>
