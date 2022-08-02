@@ -268,6 +268,14 @@ body.opacity-1 .linting-annotation {
   opacity: 0.5;
 }
 
+body.opacity-1 .djs-overlays:not(.hover) .linting-annotation {
+  opacity: 0.5;
+}
+
+body.opacity-1 .djs-overlays.hover .linting-annotation {
+  opacity: 1;
+}
+
 /* Variant 1 - Operate */
 body.variant-1 .linting-annotation {
   display: flex;
