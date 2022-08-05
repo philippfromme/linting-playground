@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import Modeler from 'bpmn-js/lib/Modeler';
 
 import { Linter } from '@camunda/linting';
+import lintingModule from '@camunda/linting/modeler';
+import '@camunda/linting/assets/linting.css';
 
 import zeebeModdlePackage from 'zeebe-bpmn-moddle/resources/zeebe';
 import zeebeModdleExtension from 'zeebe-bpmn-moddle/lib';
@@ -14,8 +16,6 @@ import {
   BpmnPropertiesProviderModule as bpmnPropertiesProviderModule,
   ZeebePropertiesProviderModule as zeebePropertiesProviderModule
 } from 'bpmn-js-properties-panel';
-
-import lintingModule from './features/linting';
 
 import 'bpmn-js-properties-panel/dist/assets/properties-panel.css';
 import 'bpmn-js/dist/assets/diagram-js.css';
